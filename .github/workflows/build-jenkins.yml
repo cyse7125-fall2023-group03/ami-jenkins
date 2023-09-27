@@ -5,7 +5,8 @@ on:
     branches: [main]
 
 jobs:
-  build-ami:
+  build:
+    name: build-ami
     runs-on: ubuntu-latest
 
     steps:
