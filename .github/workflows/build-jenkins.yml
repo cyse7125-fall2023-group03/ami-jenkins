@@ -6,36 +6,35 @@ on:
       - main
 
 jobs:
-  run-tests:
-    build-ami:
-      runs-on: ubuntu-latest
+  build-ami:
+    runs-on: ubuntu-latest
 
-      steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
 
-      - name: Build AMI
-        run: |
-          curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-          sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-          sudo apt-get update && sudo apt-get install packer
-          pwd
-          cd packer
-          packer init .
-          packer validate .
-          packer build -var aws_access_key=$AWS_DEV_ACCESS_KEY -var aws_secret_key=$AWS_DEV_SECRET_KEY -var subnet_id=$AWS_DEV_SUBNET_ID -var aws_region=$AWS_REGION ami.pkr.hcl
-        env:
-          AWS_DEV_ACCESS_KEY: ${{ secrets.AWS_GH_ACCESS_KEY }}
-          AWS_DEV_SECRET_KEY: ${{ secrets.AWS_GH_ACCESS_VAL }}
-          AWS_DEV_SUBNET_ID: ${{ secrets.AWS_GH_DEV_SUBNET_ID }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          SOURCE_AMI: ${{ secrets.AWS_JENKINS_SOURCE_AMI }}
-          AWS_DEMO_ACCOUNT_ID: ${{ secrets.AWS_UK_DEMO_ACCOUNT_ID }} 
+    - name: Build AMI
+      run: |
+        curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+        sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+        sudo apt-get update && sudo apt-get install packer
+        pwd
+        cd packer
+        packer init .
+        packer validate .
+        packer build -var aws_access_key=$AWS_DEV_ACCESS_KEY -var aws_secret_key=$AWS_DEV_SECRET_KEY -var subnet_id=$AWS_DEV_SUBNET_ID -var aws_region=$AWS_REGION ami.pkr.hcl
+      env:
+        AWS_DEV_ACCESS_KEY: ${{ secrets.AWS_GH_ACCESS_KEY }}
+        AWS_DEV_SECRET_KEY: ${{ secrets.AWS_GH_ACCESS_VAL }}
+        AWS_DEV_SUBNET_ID: ${{ secrets.AWS_GH_DEV_SUBNET_ID }}
+        AWS_REGION: ${{ secrets.AWS_REGION }}
+        SOURCE_AMI: ${{ secrets.AWS_JENKINS_SOURCE_AMI }}
+        AWS_DEMO_ACCOUNT_ID: ${{ secrets.AWS_UK_DEMO_ACCOUNT_ID }} 
 
 
-      - name: Set up AWS CLI
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_GH_ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.AWS_GH_ACCESS_VAL }}
-          aws-region: ${{ secrets.AWS_REGION }}
+    - name: Set up AWS CLI
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_GH_ACCESS_KEY }}
+        aws-secret-access-key: ${{ secrets.AWS_GH_ACCESS_VAL }}
+        aws-region: ${{ secrets.AWS_REGION }}
