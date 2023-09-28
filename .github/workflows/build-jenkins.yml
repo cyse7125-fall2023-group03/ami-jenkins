@@ -29,3 +29,6 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
           SOURCE_AMI: ${{ secrets.AWS_JENKINS_SOURCE_AMI }}
           AWS_DEMO_ACCOUNT_ID: ${{ secrets.AWS_UK_DEMO_ACCOUNT_ID }}
+          AWS_PG_DEMO_ACCOUNT_ID: ${{ secrets.AWS_PG_DEMO_ACCOUNT_ID }}
+          AWS_BM_DEMO_ACCOUNT_ID: ${{ secrets.AWS_BM_DEMO_ACCOUNT_ID }}
+          AWS_UK_DEMO_ACCOUNT_ID: ${{ secrets.AWS_UK_DEMO_ACCOUNT_ID }}
