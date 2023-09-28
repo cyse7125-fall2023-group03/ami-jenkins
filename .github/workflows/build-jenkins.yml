@@ -21,12 +21,12 @@ jobs:
           sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
           sudo apt-get update && sudo apt-get install packer
           pwd
-          ls -al
-          cd ..
-          ls -al
-          cd ./ami-jenkins/packer
-          ls -al
-          cd ./packer/
+          # ls -al
+          # cd ..
+          # ls -al
+          # cd ./ami-jenkins/packer
+          # ls -al
+          # cd ./packer/
           packer init .
           packer validate .
           packer build -var aws_access_key=$AWS_DEV_ACCESS_KEY -var aws_secret_key=$AWS_DEV_SECRET_KEY -var subnet_id=$AWS_DEV_SUBNET_ID -var aws_region=$AWS_REGION ami.pkr.hcl
@@ -36,7 +36,9 @@ jobs:
           AWS_DEV_SUBNET_ID: ${{ secrets.AWS_GH_DEV_SUBNET_ID }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
           SOURCE_AMI: ${{ secrets.AWS_JENKINS_SOURCE_AMI }}
-          AWS_DEMO_ACCOUNT_ID: ${{ secrets.AWS_UK_DEMO_ACCOUNT_ID }} 
+          AWS_DEMO_ACCOUNT_ID: ${{ secrets.AWS_UK_DEMO_ACCOUNT_ID }}
+        with:
+          working_directory: ./packer/
         
       # - name: Packer Validate
       #   uses: hashicorp/packer-github-actions@master
