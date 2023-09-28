@@ -15,7 +15,7 @@ variable "aws_secret_key" {
 
 variable "share_account_id" {
   type    = list(string)
-  default = [env("AWS_UK_DEMO_ACCOUNT_ID"), env("AWS_PG_DEMO_ACCOUNT_ID"), env("AWS_BM_DEMO_ACCOUNT_ID")]
+  default = [env("AWS_PG_DEMO_ACCOUNT_ID")]
 }
 
 variable "owner_account_id" {
