@@ -3,7 +3,7 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get install --fix-missing
 sudo apt-get install default-jre -y
-sudo java --version 
+sudo java --version
 
 #install jenkins
 curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
