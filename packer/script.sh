@@ -1,9 +1,9 @@
 #!/bin/bash
-sudo apt update -y
-sudo apt upgrade -y
+sudo apt-get update -y
+sudo apt-get upgrade -y
 # sudo apt-get install --fix-missing
-echo sudo apt install openjdk-11-jdk -y
-sudo apt install openjdk-11-jdk -y
+echo sudo apt-get install openjdk-11-jdk -y
+sudo apt-get install openjdk-11-jdk -y
 sudo java --version
 sudo javac --version
 
