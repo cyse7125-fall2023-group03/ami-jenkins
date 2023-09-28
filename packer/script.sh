@@ -32,6 +32,7 @@ jenkins.ganeshvasa.me, jenkins.banishmg.me, jenkins.udaykk.me {
 EOF
 
 sudo systemctl start jenkins.service
+sudo systemctl enable jenkins
 sudo systemctl enable --now caddy
 
 sudo systemctl status jenkins.service
