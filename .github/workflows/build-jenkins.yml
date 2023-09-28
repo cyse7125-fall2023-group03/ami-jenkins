@@ -21,7 +21,7 @@ jobs:
           sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
           sudo apt-get update && sudo apt-get install packer
           pwd
-          cd packer
+          cd ./packer/
           packer init .
           packer validate .
           packer build -var aws_access_key=$AWS_DEV_ACCESS_KEY -var aws_secret_key=$AWS_DEV_SECRET_KEY -var subnet_id=$AWS_DEV_SUBNET_ID -var aws_region=$AWS_REGION ami.pkr.hcl
