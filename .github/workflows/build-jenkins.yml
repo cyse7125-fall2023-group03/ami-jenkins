@@ -6,6 +6,7 @@ on:
 
 jobs:
   run-tests:
+    name: build-ami
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
