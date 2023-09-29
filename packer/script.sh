@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo apt --fix-broken install
 sudo apt update -y
-sudo apt upgrade -y
+sudo apt dist-upgrade -y
 # sudo apt-get install --fix-missing
 sudo apt install openjdk-11-jdk -y
 sudo java --version
