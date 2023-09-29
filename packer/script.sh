@@ -1,8 +1,17 @@
 #!/bin/bash
+sudo rm /var/lib/dpkg/lock
+sudo rm /var/lib/dpkg/lock-frontend
+sudo rm /var/lib/apt/lists/lock
+sudo rm /var/cache/apt/archives/lock
+sudo dpkg --configure -a
 sudo apt --fix-broken install
 sudo apt update -y
+sudo apt clean
+sudo apt-get install --fix-missing
+sudo apt install -f
+sudo apt update -y
 sudo apt dist-upgrade -y
-# sudo apt-get install --fix-missing
+# sudo reboot
 sudo apt install openjdk-11-jdk -y
 sudo java --version
 sudo javac --version
